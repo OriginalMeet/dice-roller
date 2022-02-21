@@ -22,14 +22,20 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h3>Dice Roller</h3>
-        <input type="number" value={numDice} id="numDice" min="1" max="10" onChange={(v) => setDiceNumber(v.target.value)} />
-        {
-          diceVal.map((v,i) => <Dice val={v} key={i} />)
-        }
-        <button onClick={() => setDiceVal(Array.from({ length: Number(numDice) }, () => Math.floor(Math.random() * 6)))}>Roll Dice</button>
+        <span className="title">Dice Roller</span>
+        <div className="dice-container">
+          <div className="dices margin-top">
+            {
+              diceVal.map((v,i) => <Dice val={v} key={i} />)
+            }
+          </div>
+          <div className="flex-column">
+            <input type="number" value={numDice} id="numDice" min="1" max="10" onChange={(v) => setDiceNumber(v.target.value)} />
+            <button className="button" onClick={() => setDiceVal(Array.from({ length: Number(numDice) }, () => Math.floor(Math.random() * 6)))}>Roll Dice</button>
+          </div>
+        </div>
       </header>
-    </div>
+    </div> 
   );
 }
 
